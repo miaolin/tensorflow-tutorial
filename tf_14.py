@@ -46,13 +46,13 @@ merged = tf.summary.merge_all()
 writer = tf.summary.FileWriter("logs/", sess.graph)
 
 init = tf.global_variables_initializer()
-# sess.run(init)
-# for i in range(100):
-#     sess.run(train_step, feed_dict={xs: x_data, ys: y_data})
-#     if i % 50 == 0:
-#         result = sess.run(merged,
-#                           feed_dict={xs: x_data, ys: y_data})
-#         writer.add_summary(result, i)
+sess.run(init)
+for i in range(1000):
+    sess.run(train_step, feed_dict={xs: x_data, ys: y_data})
+    if i % 50 == 0:
+        result = sess.run(merged,
+                          feed_dict={xs: x_data, ys: y_data})
+        writer.add_summary(result, i)
 
 # direct to the local dir and run this in terminal:
 # $ tensorboard --logdir logs
